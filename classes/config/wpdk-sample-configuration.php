@@ -71,7 +71,7 @@ class ControlsConfiguration4 extends WPDKConfiguration {
         parent::__construct( self::CONFIGURATION_NAME );
 
         /* Init my tree settings. */
-        $this->settings = new ControlsSettings();
+        $this->settings = new ControlsSettings4();
 
     }
 
@@ -80,10 +80,10 @@ class ControlsConfiguration4 extends WPDKConfiguration {
 /**
  * Insert here all properties/configuration for your plugin settings
  *
- * @class ControlsSettings
+ * @class ControlsSettings4
  *
  */
-class ControlsSettings {
+class ControlsSettings4 {
 
     /* Configuration properties: this is the model that the view controller of configuration will handle,
        in order to load and store properties. Any value is related to a WPDK graphic control shown through ControlsConfigurationView class  */
@@ -93,12 +93,12 @@ class ControlsSettings {
     public $value_swipe;
 
     /**
-     * Create an instance of ControlsSettings class.
+     * Create an instance of ControlsSettings4 class.
      * The constructor set the default values
      *
      * @brief Construct
      *
-     * @return ControlsSettings
+     * @return ControlsSettings4
      */
     public function __construct() {
         $this->resetToDefault();

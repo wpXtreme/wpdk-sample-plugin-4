@@ -19,7 +19,7 @@ class ControlsConfiguration4ViewController extends WPDKViewController {
   public function __construct()  {
 
     // Build the container view, with header title
-    parent::__construct( 'controls-view-controller-3', 'This is the main view of plugin, with configuration loading and recording' );
+    parent::__construct( 'controls-view-controller-4', 'This is the main view of plugin, with configuration loading and recording' );
 
     // Create a specialized WPDKView that embeds all WPDK graphic controls and configuration
     $controls_view = new ControlsConfiguration4View( 'Graphic Controls View + configuration recording' );
