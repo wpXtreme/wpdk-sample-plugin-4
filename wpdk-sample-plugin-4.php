@@ -1,7 +1,8 @@
 <?php
+
 /**
  * Plugin Name:     WPDK Sample Plugin #4
- * Plugin URI:      https://wpxtre.me
+ * Plugin URI:      http://wpdk.io
  * Description:     Sample #4 of WordPress plugin developed with WPDK framework - see readme.md in plugin root directory for details
  * Version:         1.0.0
  * Author:          wpXtreme
@@ -12,40 +13,43 @@
 
 // Include WPDK framework - the root directory name of WPDK may be different.
 // Please change the line below according to your environment.
-require_once( trailingslashit( dirname( dirname( __FILE__ ))) . 'wpdk-production/wpdk.php' );
+//require_once( trailingslashit( dirname( dirname( __FILE__ ) ) ) . 'wpdk-production/wpdk.php' );
+require_once( trailingslashit( dirname( dirname( __FILE__ ) ) ) . 'wpxtreme/wpdk/wpdk.php' );
 
 /**
- * WPDKSamplePlugin4 is the main class of this plugin, and extends WPDKWordPressPlugin
+ * WPDKSamplePlugin is the main class of this plugin, and extends WPDKWordPressPlugin
  *
- * @class              WPDKSamplePlugin4
+ * @class              WPDKSamplePlugin
  * @author             wpXtreme team
  * @copyright          Copyright (C) __WPXGENESI_PLUGIN_AUTHOR__.
  * @date               2013-07-20
  * @version            1.0.0
  *
  */
-final class WPDKSamplePlugin4 extends WPDKWordPressPlugin {
+final class WPDKSamplePlugin extends WPDKWordPressPlugin {
 
   /**
-   * Create an instance of WPDKSamplePlugin4 class
+   * Create an instance of WPDKSamplePlugin class
    *
    * @brief Construct
    *
    * @param string $file The main file of this plugin. Usually __FILE__
    *
-   * @return WPDKSamplePlugin4 object instance
+   * @return WPDKSamplePlugin object instance
    */
-  public function __construct( $file ) {
-
+  public function __construct( $file )
+  {
+    // Parent
     parent::__construct( $file );
 
     // Build my own internal defines
     $this->defines();
 
     // Include and parse internal classes of this plugin - basic usage, no WPDK autoloading technology
-    require_once( plugin_dir_path( __FILE__ ) . 'classes/config/wpdk-sample-configuration.php' );
-    require_once( plugin_dir_path( __FILE__ ) . 'classes/config/wpdk-sample-configuration-vc.php' );
     require_once( plugin_dir_path( __FILE__ ) . 'classes/admin/wpdk-sample-admin.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'classes/about/wpdk-sample-about-viewcontroller.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'classes/preferences/wpdk-sample-preferences.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'classes/preferences/wpdk-sample-preferences-viewcontroller.php' );
 
   }
 
@@ -54,8 +58,9 @@ final class WPDKSamplePlugin4 extends WPDKWordPressPlugin {
    *
    * @brief Defines
    */
-  private function defines() {
-    include_once( 'defines.php' );
+  private function defines()
+  {
+    require_once( 'defines.php' );
   }
 
   /**
@@ -63,7 +68,9 @@ final class WPDKSamplePlugin4 extends WPDKWordPressPlugin {
    *
    * @brief Activation
    */
-  public function activation() {
+  public function activation()
+  {
+    // Override
   }
 
   /**
@@ -71,8 +78,9 @@ final class WPDKSamplePlugin4 extends WPDKWordPressPlugin {
    *
    * @brief Admin backend
    */
-  public function admin() {
-    WPDKSamplePlugin4Admin::init( $this );
+  public function admin()
+  {
+    WPDKSamplePluginAdmin::init( $this );
   }
 
   /**
@@ -80,8 +88,9 @@ final class WPDKSamplePlugin4 extends WPDKWordPressPlugin {
    *
    * @brief Init configuration
    */
-  public function configuration() {
-    ControlsConfiguration4::init();
+  public function preferences()
+  {
+    ControlsPreferences::init();
   }
 
   /**
@@ -89,11 +98,12 @@ final class WPDKSamplePlugin4 extends WPDKWordPressPlugin {
    *
    * @brief Deactivation
    */
-  public function deactivation() {
-    /** To override. */
+  public function deactivation()
+  {
+    // Override
   }
 
 }
 
 // Set an instance of your plugin in order to make it ready to user activation and deactivation
-$GLOBALS['WPDKSamplePlugin4'] = new WPDKSamplePlugin4( __FILE__ );
+$GLOBALS['WPDKSamplePlugin'] = new WPDKSamplePlugin( __FILE__ );
