@@ -13,8 +13,12 @@
 
 // Include WPDK framework - the root directory name of WPDK may be different.
 // Please change the line below according to your environment.
-//require_once( trailingslashit( dirname( dirname( __FILE__ ) ) ) . 'wpdk-production/wpdk.php' );
-require_once( trailingslashit( dirname( dirname( __FILE__ ) ) ) . 'wpxtreme/wpdk/wpdk.php' );
+if ( file_exists( trailingslashit( dirname( dirname( __FILE__ ) ) ) . 'wpxtreme/wpdk/wpdk.php' ) ) {
+  require_once( trailingslashit( dirname( dirname( __FILE__ ) ) ) . 'wpxtreme/wpdk/wpdk.php' );
+} else {
+  require_once( 'wpdk/wpdk.php' );
+}
+
 
 /**
  * WPDKSamplePlugin is the main class of this plugin, and extends WPDKWordPressPlugin
